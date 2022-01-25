@@ -1,0 +1,105 @@
+<mat-card class="crud">
+  <mat-card-title>{{datamodal.action != 'view' ? 'Registrar Póliza' : 'Detalle Póliza'}}</mat-card-title>
+<mat-card-content>
+<form [formGroup]="validateRegister">
+
+    <mat-form-field appearance="fill">
+        <mat-label>ApellidoPaterno</mat-label>
+      <input type="text" matInput placeholder="ApellidoPaterno" formControlName="apellidoP" pattern="[a-zA-Z ]{2,254}">
+      <mat-error *ngIf="validateRegister.controls.apellidoP.hasError('required')">
+        Apellido Paterno es requerido
+    </mat-error>
+    <mat-error *ngIf="validateRegister.controls.apellidoP.hasError('pattern')">
+     Solo permite letras y espacios, debe escribir minimo dos caracteres
+  </mat-error>
+    </mat-form-field>
+ 
+    <mat-form-field appearance="fill">
+        <mat-label>ApellidoMaterno</mat-label>
+        <input matInput placeholder="ApellidoMaterno" formControlName="apellidoM" pattern="[a-zA-Z ]{2,254}">
+        <mat-error *ngIf="validateRegister.controls.apellidoM.hasError('required')">
+          Apellido Materno es requerido
+      </mat-error>
+      <mat-error *ngIf="validateRegister.controls.apellidoM.hasError('pattern')">
+       Solo permite letras y espacios, debe escribir minimo dos caracteres
+    </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Nombres</mat-label>
+        <input matInput placeholder="Nombres" formControlName="nombres" pattern="[a-zA-Z ]{2,254}">
+        <mat-error *ngIf="validateRegister.controls.nombres.hasError('required')">
+            Nombres es requerido
+        </mat-error>
+        <mat-error *ngIf="validateRegister.controls.nombres.hasError('pattern')">
+         Solo permite letras y espacios, debe escribir minimo dos caracteres
+      </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" disabled="true">
+        <mat-label>Cod_Persona</mat-label>
+        <input matInput placeholder="Cod_Persona" formControlName="codP">
+        <!-- <mat-error *ngIf="validateLogin.controls.password.hasError('required')">
+            Contraseña es requerido
+        </mat-error> -->
+      </mat-form-field>
+
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha_Inicio_Vigencia</mat-label>
+        <input matInput placeholder="Fecha_Inicio_Vigencia" formControlName="fchInicio" pattern="^(19[0-9]{2}|2[0-9]{3})-(0[1-9]|1[012])-([123]0|[012][1-9]|31)$">
+        <mat-error *ngIf="validateRegister.controls.fchInicio.hasError('required')">
+          Fecha Vigencia es requerida
+      </mat-error>
+      <mat-error *ngIf="validateRegister.controls.fchInicio.hasError('pattern')">
+       Formato de fecha incorrecto: yyyy-mm-dd / fecha invalida
+    </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Monto_Prima_Bruta</mat-label>
+        <input matInput placeholder="Monto_Prima_Bruta" formControlName="montoPrima" pattern="^[0-9]+([.][0-9]+)?$">
+        <mat-error *ngIf="validateRegister.controls.montoPrima.hasError('required')">
+         Monto Bruto es requerida
+      </mat-error>
+      <mat-error *ngIf="validateRegister.controls.montoPrima.hasError('pattern')">
+        Solo valores numericos
+    </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>IGV</mat-label>
+        <input matInput placeholder="IGV" formControlName="igv" pattern="^[0-9]+([.][0-9]+)?$">
+        <mat-error *ngIf="validateRegister.controls.igv.hasError('required')">
+          IGV es requerida
+      </mat-error>
+      <mat-error *ngIf="validateRegister.controls.igv.hasError('pattern')">
+       Solo numeros enteros
+    </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" *ngIf="datamodal.action == 'view'">
+        <mat-label>Monto prima Neto</mat-label>
+        <input matInput placeholder="Monto prima Neto" formControlName="Monto_Prima_Neta" pattern="^[0-9]+([.][0-9]+)?$">
+        <!-- <mat-error *ngIf="validateRegister.controls.Monto_Prima_Neta.hasError('required')">
+          Monto prima Neto es requerida
+      </mat-error> -->
+      <!-- <mat-error *ngIf="validateRegister.controls.Monto_Prima_Neta.hasError('pattern')">
+       Solo numeros enteros
+    </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" >
+        <mat-label>Cod_Poliza</mat-label>
+        <input matInput placeholder="Cod_Poliza" formControlName="codPoliza">
+        <!-- <mat-error *ngIf="validateLogin.controls.password.hasError('required')">
+            Contraseña es requerido
+        </mat-error> -->
+      </mat-form-field>
+
+  <div class="button">
+    <button style="background-color: #00adee;" *ngIf="!datamodal.action" mat-raised-button color="primary" (click)="save()">Guardar</button>
+    <button style="background-color: #00adee;" *ngIf="datamodal.action == 'view'" mat-raised-button color="primary" (click)="close()">Cerrar</button>
+  </div>
+
+</form>
+</mat-card-content>
+</mat-card>

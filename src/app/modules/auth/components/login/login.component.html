@@ -1,0 +1,41 @@
+<mat-card>
+  
+<mat-card-content>
+  <br>
+<form [formGroup]="validateLogin">
+  <br/>
+  <div style="margin-left:15px;margin-right:15px;">
+    <img src="https://sp-ao.shortpixel.ai/client/q_glossy,ret_img/https://www.interseguro.pe/wp-content/uploads/2018/11/logo.png" >
+  </div>
+  <br/>
+  <p>
+    <mat-form-field appearance="outline">
+      <input type="text" matInput placeholder="Usuario" formControlName="username">
+      <mat-error *ngIf="validateLogin.controls.username.hasError('required')">
+        Usuario es requerido
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+  <p>
+    
+    <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="validateLogin.controls.password.hasError('required')">
+            Contraseña es requerido
+        </mat-error>
+      </mat-form-field>
+  </p>
+
+  <div class="button">
+    <button style="background-color: #00adee;"
+    mat-raised-button color="primary" (click)="login()">Ingresar</button>
+  </div>
+
+</form>
+</mat-card-content>
+</mat-card>

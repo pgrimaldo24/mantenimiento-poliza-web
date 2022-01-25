@@ -1,0 +1,29 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+
+  .example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
+
+mat-cell:first-of-type, mat-header-cell:first-of-type, mat-footer-cell:first-of-type {
+  float: right !important;
+}
+
+th.mat-header-cell.acciones {
+  text-align: right;
+}
